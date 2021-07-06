@@ -1,0 +1,11 @@
+ln -sf ~/dotfiles/bashrc ~/.bashrc
+echo "source ~/dotfiles/bash_aliases" >> ~/.zshrc
+
+if ! command -v htop &> /dev/null; then
+  sudo apt-get install -y htop
+fi
+
+if ! command -v ag &> /dev/null; then
+  sudo apt-get install -y silversearcher-ag
+fi
+
