@@ -1,15 +1,20 @@
-ln -sf ~/dotfiles/bashrc ~/.bashrc
-echo "source ~/dotfiles/bash_aliases" >> ~/.zshrc
+# ln -sf ~/dotfiles/bashrc ~/.bashrc
+if [ -n "$SPIN" ]; then
+  echo "source ~/dotfiles/bash_aliases" >> ~/.zshrc
+  echo 'if [ -z "$TMUX" ]; then tmux new -As0; fi' >> ~/.zshrc
 
-if ! command -v htop &> /dev/null; then
-  sudo apt-get -o DPkg::Lock::Timeout=120 install -y htop
-fi
+  ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 
-if ! command -v ag &> /dev/null; then
-  sudo apt-get -o DPkg::Lock::Timeout=120 install -y silversearcher-ag
-fi
+  if ! command -v htop &> /dev/null; then
+    sudo apt-get -o DPkg::Lock::Timeout=120 install -y htop
+  fi
 
-if ! command -v rsync &> /dev/null; then
-  sudo apt-get -o DPkg::Lock::Timeout=120 install -y rsync
+  if ! command -v ag &> /dev/null; then
+    sudo apt-get -o DPkg::Lock::Timeout=120 install -y silversearcher-ag
+  fi
+
+  if ! command -v rsync &> /dev/null; then
+    sudo apt-get -o DPkg::Lock::Timeout=120 install -y rsync
+  fi
 fi
 
